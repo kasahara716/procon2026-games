@@ -1,4 +1,17 @@
-import { Container, Typography } from '@mui/material';
+import {
+    Box,
+    Container,
+    Grid,
+    Paper,
+    Tab,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Typography,
+} from '@mui/material';
 import { CellType } from '~/utils/game';
 import { getMapData, getMaps } from '~/utils/maps';
 
@@ -239,6 +252,105 @@ export default async function MapPage({
                     })}
                 </svg>
             </div>
+            <Box>
+                <Grid container spacing={2}>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Paper sx={{ p: 2 }} elevation={4}>
+                            <Typography variant="h6">Map情報</Typography>
+                            <TableContainer>
+                                <Table>
+                                    <TableRow>
+                                        <TableCell>燃料積載量上限</TableCell>
+                                        <TableCell>
+                                            {mapData.problem.fuelLimits}
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>混雑基準値</TableCell>
+                                        <TableCell>
+                                            {mapData.problem.busyThreshold}
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>渋滞基準値</TableCell>
+                                        <TableCell>
+                                            {mapData.problem.jammedThreshold}
+                                        </TableCell>
+                                    </TableRow>
+                                </Table>
+                            </TableContainer>
+                        </Paper>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Paper sx={{ p: 2 }} elevation={4}>
+                            <Typography variant="h6">試合情報</Typography>
+                            <TableContainer>
+                                <Table>
+                                    <TableRow>
+                                        <TableCell>日毎のステップ数</TableCell>
+                                        <TableCell>
+                                            {mapData.problem.daySteps.map(
+                                                (steps, index) => (
+                                                    <div key={index}>
+                                                        {index + 1}日目:{steps}
+                                                    </div>
+                                                ),
+                                            )}
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>渋滞基準値</TableCell>
+                                        <TableCell>
+                                            {mapData.problem.jammedThreshold}
+                                        </TableCell>
+                                    </TableRow>
+                                </Table>
+                            </TableContainer>
+                        </Paper>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Paper sx={{ p: 2 }} elevation={4}>
+                            <Typography variant="h6">スポット情報</Typography>
+                            <TableContainer
+                                sx={{
+                                    maxHeight: 400,
+                                }}
+                            >
+                                <Table stickyHeader>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>スポット番号</TableCell>
+                                            <TableCell>系列番号</TableCell>
+                                            <TableCell>位置</TableCell>
+                                            <TableCell>最大在庫数</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {mapData.problem.spots.map(
+                                            (spot, index) => (
+                                                <TableRow key={index}>
+                                                    <TableCell>
+                                                        {index + 1}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {spot.brand + 1}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {spot.pos}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {spot.stocks}
+                                                    </TableCell>
+                                                </TableRow>
+                                            ),
+                                        )}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Paper>
+                    </Grid>
+                </Grid>
+            </Box>
         </Container>
     );
 }
