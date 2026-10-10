@@ -254,7 +254,7 @@ export default async function MapPage({
             </div>
             <Box>
                 <Grid container spacing={2}>
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                         <Paper sx={{ p: 2 }} elevation={4}>
                             <Typography variant="h6">Map情報</Typography>
                             <TableContainer>
@@ -277,15 +277,6 @@ export default async function MapPage({
                                             {mapData.problem.jammedThreshold}
                                         </TableCell>
                                     </TableRow>
-                                </Table>
-                            </TableContainer>
-                        </Paper>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 4 }}>
-                        <Paper sx={{ p: 2 }} elevation={4}>
-                            <Typography variant="h6">試合情報</Typography>
-                            <TableContainer>
-                                <Table>
                                     <TableRow>
                                         <TableCell>日毎のステップ数</TableCell>
                                         <TableCell>
@@ -298,17 +289,11 @@ export default async function MapPage({
                                             )}
                                         </TableCell>
                                     </TableRow>
-                                    <TableRow>
-                                        <TableCell>渋滞基準値</TableCell>
-                                        <TableCell>
-                                            {mapData.problem.jammedThreshold}
-                                        </TableCell>
-                                    </TableRow>
                                 </Table>
                             </TableContainer>
                         </Paper>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                         <Paper sx={{ p: 2 }} elevation={4}>
                             <Typography variant="h6">スポット情報</Typography>
                             <TableContainer
