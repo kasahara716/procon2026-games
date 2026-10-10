@@ -1,0 +1,14 @@
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+  <circle
+    cx="10"
+    cy="5.5"
+    r="5"
+    fill="#006285"
+    stroke="#006285"
+    stroke-width="1"/>
+  <polygon
+    points="7,10 3,20 17,20 13,10"
+    fill="#006285"
+    stroke="#006285"
+    stroke-width="1"/>
+</svg>
